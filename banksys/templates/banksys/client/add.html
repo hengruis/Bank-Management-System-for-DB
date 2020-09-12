@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Add Profile</title>
+
+    	<link href="../../../static/banksys/client/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../../../static/banksys/client/css/style.css" rel="stylesheet">
+	</head>
+
+  	<body background="../../../static/banksys/background.jpg">
+		<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		  
+					<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+				  				<a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../account/search">Account</a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../loan/search">Loan</a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../statistics/search">Statistics</a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a>
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>
+			  			<a class="nav-link active" href="add">Add Profile</a>
+			  			<a class="nav-link" href="delete">Delete Client</a>
+			  			<a class="nav-link" href="modify">Modify Info</a>
+						<a class="nav-link" href="search">Search</a>  
+					</nav>
+				</div>
+			</div>
+
+			{% if message %}
+			{% if status == 0 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 1 %}
+			<div class="alert alert-info" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 2 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% endif %}
+
+			<div class="row" style="padding-left: 865px;">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<form role="form" method="POST">
+								<div class="form-group">
+							 		<label for="InputClientID">
+										Client ID
+									</label>
+									<input type="client_id" class="form-row" id="InputClientID" name="client_id" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="InputClientName">
+										Name
+									</label>
+									<input type="name" class="form-row" id="InputClientName" name="client_name" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputPhone">
+										Phone
+									</label>
+									<input type="phone" class="form-row" id="InputClientPhone" name="client_phone" required>
+								</div> 
+
+								<div class="form-group">
+									<label for="InputClientAddress">
+										Address
+									</label>
+									<input type="address" class="form-row" id="InputClientAddress" name="address">
+								</div>
+
+								<div class="form-group">
+							 		<label for="InputContactPhone">
+										Contact Phone
+									</label>
+									<input type="contact_phone" class="form-row" id="InputContactPhone" name="contact_phone" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputContactName">
+										Contact Name
+									</label>
+									<input type="contact_name" class="form-row" id="InputContactName" name="contact_name" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputContactEmail">
+										Contact Email
+									</label>
+									<input type="contact_email" class="form-row" id="InputContactEmail" name="contact_email">
+								</div>
+
+								<div class="form-group">
+									<label for="InputRelation">
+										Relation
+									</label>
+									<input type="relation" class="form-row" id="InputRelation" name="relation" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputLoanRes">
+										Loan Res
+									</label>
+									<input type="loan_res" class="form-row" id="InputLoanRes" name="loan_res">
+								</div>
+
+								<div class="form-group">
+									<label for="InputAccRes">
+										Acc Res
+									</label>
+									<input type="acc_res" class="form-row" id="InputAccRes" name="acc_res">
+								</div>
+
+								<button id="modal-809489" href="#modal-container-809489" role="button" class="btn btn-primary" data-toggle="modal" type="submit" method="POST">Submit</button>
+								<button type="reset" class="btn btn-warning" style="margin-left: 10px;">Reset</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/client/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/client/js/bootstrap.min.js"></script>
+		<script src="../../../static/banksys/client/js/scripts.js"></script>
+	</body>
+</html>

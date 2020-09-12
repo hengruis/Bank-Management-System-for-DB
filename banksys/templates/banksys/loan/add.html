@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Add Loan</title>
+
+    	<link href="../../../static/banksys/loan/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../static/banksys/loan/css/style.css" rel="stylesheet">
+	</head>
+
+  	<body background="../../../static/banksys/background.jpg">
+		<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		  
+					<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+				  				<a class="nav-link" href="../client/search">Profile</a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../account/search">Account</a>
+							</li>
+							<li class="nav-item active">
+				  				<a class="nav-link" href="#">Loan <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../statistics/search">Statistics</a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a>
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>
+			  			<a class="nav-link active" href="add">Add Loan</a>
+						<a class="nav-link" href="delete">Delete Loan</a>
+						<a class="nav-link" href="pay">Pay Loan</a>  
+						<a class="nav-link" href="search">Search</a>  
+					</nav>
+				</div>
+			</div>
+
+			{% if message %}
+			{% if status == 0 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 1 %}
+			<div class="alert alert-info" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 2 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% endif %}
+
+			<div class="row" style="padding-left: 865px;">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<form role="form" method="POST">
+								<div class="form-group">
+							 		<label for="InputLoanID">
+										Loan ID
+									</label>
+									<input type="loan_id" class="form-row" id="InputLoanID" name="loan_id" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="InputClient">
+										Client ID
+									</label>
+									<input type="client_id" class="form-row" id="InputClient" name="client_id" required>
+								</div>
+								
+								<div class="form-group">
+									<label for="InputAmount">
+										Amount
+									</label>
+									<input type="amount" class="form-row" id="InputAmount" name="amount" required>
+								</div> 
+
+								<div class="form-group">
+									<label for="InputSubBranch">
+										Sub-branch
+									</label>
+									<input type="subbranch" class="form-row" id="InputSubBranch" name="bank_name" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputState">
+										State
+									</label>
+									<input type="state" class="form-row" id="InputState" value="0" name="state" required>unpayed=0/under-paying=1/payed=2
+								</div>
+
+								<button id="modal-809489" href="#modal-container-809489" role="button" class="btn btn-primary" data-toggle="modal" type="submit" method="POST">Submit</button>
+
+								<button type="reset" class="btn btn-warning" style="margin-left: 10px;">Reset</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<p class="help-block" style="color: red; text-align: center; margin-top: 20px; font-size: large; font-family: Arial, Helvetica, sans-serif;">
+					<strong>Loans cannot be modified once you have created them. Please check your inputs carefully.</strong>
+				</p>
+			</div>
+		</div>
+
+		<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/loan/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/loan/js/bootstrap.min.js"></script>
+		<script src="../../../static/banksys/loan/js/scripts.js"></script>
+	</body>
+</html>

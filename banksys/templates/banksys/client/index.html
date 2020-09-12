@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<title>Index</title>
+
+		<link href="../../../static/banksys/client/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../../../static/banksys/client/css/style.css" rel="stylesheet">
+	</head>
+
+  	<body background="../../../static/banksys/background.jpg">
+		<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+
+		  			<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item active">
+				  				<a class="nav-link" href="#">Profile <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../account/search">Account</a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../loan/search">Loan</a>
+							</li>
+							<li class="nav-item">
+				  				<a class="nav-link" href="../statistics/search">Statistics</a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a> 
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>
+			  			<a class="nav-link" href="add">Add Profile</a>
+			  			<a class="nav-link" href="delete">Delete Client</a>
+			  			<a class="nav-link" href="modify">Modify Info</a>
+						<a class="nav-link" href="search">Search</a>
+					</nav>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							{% if use_id %}
+							<h3>Client Info (search by ID)</h3>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>NAME</th>
+										<th>PHONE</th>
+										<th>ADDRESS</th>
+										<th>CONTACT PHONE</th>
+										<th>CONTACT NAME</th>
+										<th>CONTACT EMAIL</th>
+										<th>RELATION</th>
+										<th>LOAN RES</th>
+										<th>ACC RES</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="table-info">
+										<td>{{ search_by_id.client_id }}</td>
+										<td>{{ search_by_id.client_name }}</td>
+										<td>{{ search_by_id.client_phone }}</td>
+										<td>{{ search_by_id.address }}</td>
+										<td>{{ search_by_id.contact_phone }}</td>
+										<td>{{ search_by_id.contact_name }}</td>
+										<td>{{ search_by_id.contact_email }}</td>
+										<td>{{ search_by_id.relation }}</td>
+										<td>{{ search_by_id.loan_res.emp_id}}</td>
+										<td>{{ search_by_id.acc_res.emp_id }}</td>
+									</tr>
+								</tbody>
+							</table>
+							{% endif %}
+
+							{% if use_name %}
+							<h3>Client Info (search by Name)</h3>
+							<table class="table">
+								<thead>
+									<tr>
+										<th>ID</th>
+										<th>NAME</th>
+										<th>PHONE</th>
+										<th>ADDRESS</th>
+										<th>CONTACT PHONE</th>
+										<th>CONTACT NAME</th>
+										<th>CONTACT EMAIL</th>
+										<th>RELATION</th>
+										<th>LOAN RES</th>
+										<th>ACC RES</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for client in search_by_name %}
+									<tr class="table-info">
+										<td>{{ client.client_id }}</td>
+										<td>{{ client.client_name }}</td>
+										<td>{{ client.client_phone }}</td>
+										<td>{{ client.address }}</td>
+										<td>{{ client.contact_phone }}</td>
+										<td>{{ client.contact_name }}</td>
+										<td>{{ client.contact_email }}</td>
+										<td>{{ client.relation }}</td>
+										<td>{{ client.loan_res.emp_id}}</td>
+										<td>{{ client.acc_res.emp_id }}</td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/client/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/client/js/bootstrap.min.js"></script>
+		<script src="../../../static/banksys/client/js/scripts.js"></script>
+	</body>
+</html>

@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Chart</title>
+
+    	<link href="../../../static/banksys/statistics/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../../../static/banksys/statistics/css/style.css" rel="stylesheet">
+	</head>
+
+	<body background="../../../static/banksys/background.jpg">
+    	<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		  
+					<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+						  		<a class="nav-link" href="../client/search">Profile</a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../account/search">Account</a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../sav/search">sav</a>
+							</li>
+							<li class="nav-item active">
+						  		<a class="nav-link" href="#">Statistics <span class="sr-only">(current)</span></a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a>  
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>
+                        <a class="nav-link" href="search">Search</a>
+					</nav>
+				</div>
+			</div>
+        </div>
+        
+        <div id="container-savings-month" style="width: 1300px;height: 650px;margin: auto;"></div>
+        <style>
+            #datatable-sacvings {
+	            border: 1px solid #ccc;
+	            border-collapse: collapse;
+                border-spacing: 0;
+	            font-size: 12px;
+            }
+            td,th {
+	            border: 1px solid #ccc;
+                padding: 4px 20px;
+            }
+            table {
+                margin: auto;
+            }
+            p {
+                text-align: center;
+                font-weight: bold;
+                padding-top: 50px;
+            }
+        </style>
+            <p>各支行业务储蓄总金额(月)</p>
+            <table id="datatable-savings-month">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Jan</th>
+                        <th>{{A_month_sav.0}}</th>
+                        <th>{{B_month_sav.0}}</th>
+                        <th>{{C_month_sav.0}}</th>
+                        <th>{{D_month_sav.0}}</th>
+                        <th>{{E_month_sav.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Feb</th>
+                        <th>{{A_month_sav.1}}</th>
+                        <th>{{B_month_sav.1}}</th>
+                        <th>{{C_month_sav.1}}</th>
+                        <th>{{D_month_sav.1}}</th>
+                        <th>{{E_month_sav.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mar</th>
+                        <th>{{A_month_sav.2}}</th>
+                        <th>{{B_month_sav.2}}</th>
+                        <th>{{C_month_sav.2}}</th>
+                        <th>{{D_month_sav.2}}</th>
+                        <th>{{E_month_sav.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>Apr</th>
+                        <th>{{A_month_sav.3}}</th>
+                        <th>{{B_month_sav.3}}</th>
+                        <th>{{C_month_sav.3}}</th>
+                        <th>{{D_month_sav.3}}</th>
+                        <th>{{E_month_sav.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>May</th>
+                        <th>{{A_month_sav.4}}</th>
+                        <th>{{B_month_sav.4}}</th>
+                        <th>{{C_month_sav.4}}</th>
+                        <th>{{D_month_sav.4}}</th>
+                        <th>{{E_month_sav.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jun</th>
+                        <th>{{A_month_sav.5}}</th>
+                        <th>{{B_month_sav.5}}</th>
+                        <th>{{C_month_sav.5}}</th>
+                        <th>{{D_month_sav.5}}</th>
+                        <th>{{E_month_sav.5}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jul</th>
+                        <th>{{A_month_sav.6}}</th>
+                        <th>{{B_month_sav.6}}</th>
+                        <th>{{C_month_sav.6}}</th>
+                        <th>{{D_month_sav.6}}</th>
+                        <th>{{E_month_sav.6}}</th>
+                    </tr>
+                    <tr>
+                        <th>Aug</th>
+                        <th>{{A_month_sav.7}}</th>
+                        <th>{{B_month_sav.7}}</th>
+                        <th>{{C_month_sav.7}}</th>
+                        <th>{{D_month_sav.7}}</th>
+                        <th>{{E_month_sav.7}}</th>
+                    </tr>
+                    <tr>
+                        <th>Sep</th>
+                        <th>{{A_month_sav.8}}</th>
+                        <th>{{B_month_sav.8}}</th>
+                        <th>{{C_month_sav.8}}</th>
+                        <th>{{D_month_sav.8}}</th>
+                        <th>{{E_month_sav.8}}</th>
+                    </tr>
+                    <tr>
+                        <th>Oct</th>
+                        <th>{{A_month_sav.9}}</th>
+                        <th>{{B_month_sav.9}}</th>
+                        <th>{{C_month_sav.9}}</th>
+                        <th>{{D_month_sav.9}}</th>
+                        <th>{{E_month_sav.9}}</th>
+                    </tr>
+                    <tr>
+                        <th>Nov</th>
+                        <th>{{A_month_sav.10}}</th>
+                        <th>{{B_month_sav.10}}</th>
+                        <th>{{C_month_sav.10}}</th>
+                        <th>{{D_month_sav.10}}</th>
+                        <th>{{E_month_sav.10}}</th>
+                    </tr>
+                    <tr>
+                        <th>Dec</th>
+                        <th>{{A_month_sav.11}}</th>
+                        <th>{{B_month_sav.11}}</th>
+                        <th>{{C_month_sav.11}}</th>
+                        <th>{{D_month_sav.11}}</th>
+                        <th>{{E_month_sav.11}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-loans-month" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行业务贷款总金额(月)</p>
+            <table id="datatable-loans-month" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Jan</th>
+                        <th>{{A_month_loan.0}}</th>
+                        <th>{{B_month_loan.0}}</th>
+                        <th>{{C_month_loan.0}}</th>
+                        <th>{{D_month_loan.0}}</th>
+                        <th>{{E_month_loan.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Feb</th>
+                        <th>{{A_month_loan.1}}</th>
+                        <th>{{B_month_loan.1}}</th>
+                        <th>{{C_month_loan.1}}</th>
+                        <th>{{D_month_loan.1}}</th>
+                        <th>{{E_month_loan.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mar</th>
+                        <th>{{A_month_loan.2}}</th>
+                        <th>{{B_month_loan.2}}</th>
+                        <th>{{C_month_loan.2}}</th>
+                        <th>{{D_month_loan.2}}</th>
+                        <th>{{E_month_loan.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>Apr</th>
+                        <th>{{A_month_loan.3}}</th>
+                        <th>{{B_month_loan.3}}</th>
+                        <th>{{C_month_loan.3}}</th>
+                        <th>{{D_month_loan.3}}</th>
+                        <th>{{E_month_loan.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>May</th>
+                        <th>{{A_month_loan.4}}</th>
+                        <th>{{B_month_loan.4}}</th>
+                        <th>{{C_month_loan.4}}</th>
+                        <th>{{D_month_loan.4}}</th>
+                        <th>{{E_month_loan.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jun</th>
+                        <th>{{A_month_loan.5}}</th>
+                        <th>{{B_month_loan.5}}</th>
+                        <th>{{C_month_loan.5}}</th>
+                        <th>{{D_month_loan.5}}</th>
+                        <th>{{E_month_loan.5}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jul</th>
+                        <th>{{A_month_loan.6}}</th>
+                        <th>{{B_month_loan.6}}</th>
+                        <th>{{C_month_loan.6}}</th>
+                        <th>{{D_month_loan.6}}</th>
+                        <th>{{E_month_loan.6}}</th>
+                    </tr>
+                    <tr>
+                        <th>Aug</th>
+                        <th>{{A_month_loan.7}}</th>
+                        <th>{{B_month_loan.7}}</th>
+                        <th>{{C_month_loan.7}}</th>
+                        <th>{{D_month_loan.7}}</th>
+                        <th>{{E_month_loan.7}}</th>
+                    </tr>
+                    <tr>
+                        <th>Sep</th>
+                        <th>{{A_month_loan.8}}</th>
+                        <th>{{B_month_loan.8}}</th>
+                        <th>{{C_month_loan.8}}</th>
+                        <th>{{D_month_loan.8}}</th>
+                        <th>{{E_month_loan.8}}</th>
+                    </tr>
+                    <tr>
+                        <th>Oct</th>
+                        <th>{{A_month_loan.9}}</th>
+                        <th>{{B_month_loan.9}}</th>
+                        <th>{{C_month_loan.9}}</th>
+                        <th>{{D_month_loan.9}}</th>
+                        <th>{{E_month_loan.9}}</th>
+                    </tr>
+                    <tr>
+                        <th>Nov</th>
+                        <th>{{A_month_loan.10}}</th>
+                        <th>{{B_month_loan.10}}</th>
+                        <th>{{C_month_loan.10}}</th>
+                        <th>{{D_month_loan.10}}</th>
+                        <th>{{E_month_loan.10}}</th>
+                    </tr>
+                    <tr>
+                        <th>Dec</th>
+                        <th>{{A_month_loan.11}}</th>
+                        <th>{{B_month_loan.11}}</th>
+                        <th>{{C_month_loan.11}}</th>
+                        <th>{{D_month_loan.11}}</th>
+                        <th>{{E_month_loan.11}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-clients-month" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行总用户(月)</p>
+            <table id="datatable-clients-month" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Jan</th>
+                        <th>{{A_month_client.0}}</th>
+                        <th>{{B_month_client.0}}</th>
+                        <th>{{C_month_client.0}}</th>
+                        <th>{{D_month_client.0}}</th>
+                        <th>{{E_month_client.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Feb</th>
+                        <th>{{A_month_client.1}}</th>
+                        <th>{{B_month_client.1}}</th>
+                        <th>{{C_month_client.1}}</th>
+                        <th>{{D_month_client.1}}</th>
+                        <th>{{E_month_client.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Mar</th>
+                        <th>{{A_month_client.2}}</th>
+                        <th>{{B_month_client.2}}</th>
+                        <th>{{C_month_client.2}}</th>
+                        <th>{{D_month_client.2}}</th>
+                        <th>{{E_month_client.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>Apr</th>
+                        <th>{{A_month_client.3}}</th>
+                        <th>{{B_month_client.3}}</th>
+                        <th>{{C_month_client.3}}</th>
+                        <th>{{D_month_client.3}}</th>
+                        <th>{{E_month_client.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>May</th>
+                        <th>{{A_month_client.4}}</th>
+                        <th>{{B_month_client.4}}</th>
+                        <th>{{C_month_client.4}}</th>
+                        <th>{{D_month_client.4}}</th>
+                        <th>{{E_month_client.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jun</th>
+                        <th>{{A_month_client.5}}</th>
+                        <th>{{B_month_client.5}}</th>
+                        <th>{{C_month_client.5}}</th>
+                        <th>{{D_month_client.5}}</th>
+                        <th>{{E_month_client.5}}</th>
+                    </tr>
+                    <tr>
+                        <th>Jul</th>
+                        <th>{{A_month_client.6}}</th>
+                        <th>{{B_month_client.6}}</th>
+                        <th>{{C_month_client.6}}</th>
+                        <th>{{D_month_client.6}}</th>
+                        <th>{{E_month_client.6}}</th>
+                    </tr>
+                    <tr>
+                        <th>Aug</th>
+                        <th>{{A_month_client.7}}</th>
+                        <th>{{B_month_client.7}}</th>
+                        <th>{{C_month_client.7}}</th>
+                        <th>{{D_month_client.7}}</th>
+                        <th>{{E_month_client.7}}</th>
+                    </tr>
+                    <tr>
+                        <th>Sep</th>
+                        <th>{{A_month_client.8}}</th>
+                        <th>{{B_month_client.8}}</th>
+                        <th>{{C_month_client.8}}</th>
+                        <th>{{D_month_client.8}}</th>
+                        <th>{{E_month_client.8}}</th>
+                    </tr>
+                    <tr>
+                        <th>Oct</th>
+                        <th>{{A_month_client.9}}</th>
+                        <th>{{B_month_client.9}}</th>
+                        <th>{{C_month_client.9}}</th>
+                        <th>{{D_month_client.9}}</th>
+                        <th>{{E_month_client.9}}</th>
+                    </tr>
+                    <tr>
+                        <th>Nov</th>
+                        <th>{{A_month_client.10}}</th>
+                        <th>{{B_month_client.10}}</th>
+                        <th>{{C_month_client.10}}</th>
+                        <th>{{D_month_client.10}}</th>
+                        <th>{{E_month_client.10}}</th>
+                    </tr>
+                    <tr>
+                        <th>Dec</th>
+                        <th>{{A_month_client.11}}</th>
+                        <th>{{B_month_client.11}}</th>
+                        <th>{{C_month_client.11}}</th>
+                        <th>{{D_month_client.11}}</th>
+                        <th>{{E_month_client.11}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-savings-quarter" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <style>
+                #datatable-sacvings {
+	                border: 1px solid #ccc;
+	                border-collapse: collapse;
+	                border-spacing: 0;
+	                font-size: 12px;
+                }
+                td,th {
+	                border: 1px solid #ccc;
+	                padding: 4px 20px;
+                }
+                table {
+                    margin: auto;
+                }
+                p {
+                    text-align: center;
+                    font-weight: bold;
+                    padding-top: 50px;
+                }
+            </style>
+            <p>各支行业务储蓄总金额(季)</p>
+            <table id="datatable-savings-quarter">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Q1</th>
+                        <th>{{A_quarter_sav.0}}</th>
+                        <th>{{B_quarter_sav.0}}</th>
+                        <th>{{C_quarter_sav.0}}</th>
+                        <th>{{D_quarter_sav.0}}</th>
+                        <th>{{E_quarter_sav.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q2</th>
+                        <th>{{A_quarter_sav.1}}</th>
+                        <th>{{B_quarter_sav.1}}</th>
+                        <th>{{C_quarter_sav.1}}</th>
+                        <th>{{D_quarter_sav.1}}</th>
+                        <th>{{E_quarter_sav.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q3</th>
+                        <th>{{A_quarter_sav.2}}</th>
+                        <th>{{B_quarter_sav.2}}</th>
+                        <th>{{C_quarter_sav.2}}</th>
+                        <th>{{D_quarter_sav.2}}</th>
+                        <th>{{E_quarter_sav.2}}</th>
+                    </tr>
+                    <tr><th>Q4</th>
+                        <th>{{A_quarter_sav.3}}</th>
+                        <th>{{B_quarter_sav.3}}</th>
+                        <th>{{C_quarter_sav.3}}</th>
+                        <th>{{D_quarter_sav.3}}</th>
+                        <th>{{E_quarter_sav.3}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-loans-quarter" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行业务贷款总金额(季)</p>
+            <table id="datatable-loans-quarter" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Q1</th>
+                        <th>{{A_quarter_loan.0}}</th>
+                        <th>{{B_quarter_loan.0}}</th>
+                        <th>{{C_quarter_loan.0}}</th>
+                        <th>{{D_quarter_loan.0}}</th>
+                        <th>{{E_quarter_loan.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q2</th>
+                        <th>{{A_quarter_loan.1}}</th>
+                        <th>{{B_quarter_loan.1}}</th>
+                        <th>{{C_quarter_loan.1}}</th>
+                        <th>{{D_quarter_loan.1}}</th>
+                        <th>{{E_quarter_loan.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q3</th>
+                        <th>{{A_quarter_loan.2}}</th>
+                        <th>{{B_quarter_loan.2}}</th>
+                        <th>{{C_quarter_loan.2}}</th>
+                        <th>{{D_quarter_loan.2}}</th>
+                        <th>{{E_quarter_loan.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q4</th>
+                        <th>{{A_quarter_loan.3}}</th>
+                        <th>{{B_quarter_loan.3}}</th>
+                        <th>{{C_quarter_loan.3}}</th>
+                        <th>{{D_quarter_loan.3}}</th>
+                        <th>{{E_quarter_loan.3}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-clients-quarter" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行总用户(季)</p>
+            <table id="datatable-clients-quarter" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Q1</th>
+                        <th>{{A_quarter_client.0}}</th>
+                        <th>{{B_quarter_client.0}}</th>
+                        <th>{{C_quarter_client.0}}</th>
+                        <th>{{D_quarter_client.0}}</th>
+                        <th>{{E_quarter_client.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q2</th>
+                        <th>{{A_quarter_client.1}}</th>
+                        <th>{{B_quarter_client.1}}</th>
+                        <th>{{C_quarter_client.1}}</th>
+                        <th>{{D_quarter_client.1}}</th>
+                        <th>{{E_quarter_client.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q3</th>
+                        <th>{{A_quarter_client.2}}</th>
+                        <th>{{B_quarter_client.2}}</th>
+                        <th>{{C_quarter_client.2}}</th>
+                        <th>{{D_quarter_client.2}}</th>
+                        <th>{{E_quarter_client.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>Q4</th>
+                        <th>{{A_quarter_client.3}}</th>
+                        <th>{{B_quarter_client.3}}</th>
+                        <th>{{C_quarter_client.3}}</th>
+                        <th>{{D_quarter_client.3}}</th>
+                        <th>{{E_quarter_client.3}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-savings-year" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <style>
+                #datatable-sacvings {
+	                border: 1px solid #ccc;
+	                border-collapse: collapse;
+	                border-spacing: 0;
+	                font-size: 12px;
+                }
+                td,th {
+	                border: 1px solid #ccc;
+	                padding: 4px 20px;
+                }
+                table {
+                    margin: auto;
+                }
+                p {
+                    text-align: center;
+                    font-weight: bold;
+                    padding-top: 50px;
+                }
+            </style>
+            <p>各支行业务储蓄总金额(年)</p>
+            <table id="datatable-savings-year">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>2015</th>
+                        <th>{{A_year_sav.0}}</th>
+                        <th>{{B_year_sav.0}}</th>
+                        <th>{{C_year_sav.0}}</th>
+                        <th>{{D_year_sav.0}}</th>
+                        <th>{{E_year_sav.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>2016</th>
+                        <th>{{A_year_sav.1}}</th>
+                        <th>{{B_year_sav.1}}</th>
+                        <th>{{C_year_sav.1}}</th>
+                        <th>{{D_year_sav.1}}</th>
+                        <th>{{E_year_sav.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>2017</th>
+                        <th>{{A_year_sav.2}}</th>
+                        <th>{{B_year_sav.2}}</th>
+                        <th>{{C_year_sav.2}}</th>
+                        <th>{{D_year_sav.2}}</th>
+                        <th>{{E_year_sav.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>2018</th>
+                        <th>{{A_year_sav.3}}</th>
+                        <th>{{B_year_sav.3}}</th>
+                        <th>{{C_year_sav.3}}</th>
+                        <th>{{D_year_sav.3}}</th>
+                        <th>{{E_year_sav.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>2019</th>
+                        <th>{{A_year_sav.4}}</th>
+                        <th>{{B_year_sav.4}}</th>
+                        <th>{{C_year_sav.4}}</th>
+                        <th>{{D_year_sav.4}}</th>
+                        <th>{{E_year_sav.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>2020</th>
+                        <th>{{A_year_sav.5}}</th>
+                        <th>{{B_year_sav.5}}</th>
+                        <th>{{C_year_sav.5}}</th>
+                        <th>{{D_year_sav.5}}</th>
+                        <th>{{E_year_sav.5}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-loans-year" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行业务贷款总金额(年)</p>
+            <table id="datatable-loans-year" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>2015</th>
+                        <th>{{A_year_loan.0}}</th>
+                        <th>{{B_year_loan.0}}</th>
+                        <th>{{C_year_loan.0}}</th>
+                        <th>{{D_year_loan.0}}</th>
+                        <th>{{E_year_loan.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>2016</th>
+                        <th>{{A_year_loan.1}}</th>
+                        <th>{{B_year_loan.1}}</th>
+                        <th>{{C_year_loan.1}}</th>
+                        <th>{{D_year_loan.1}}</th>
+                        <th>{{E_year_loan.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>2017</th>
+                        <th>{{A_year_loan.2}}</th>
+                        <th>{{B_year_loan.2}}</th>
+                        <th>{{C_year_loan.2}}</th>
+                        <th>{{D_year_loan.2}}</th>
+                        <th>{{E_year_loan.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>2018</th>
+                        <th>{{A_year_loan.3}}</th>
+                        <th>{{B_year_loan.3}}</th>
+                        <th>{{C_year_loan.3}}</th>
+                        <th>{{D_year_loan.3}}</th>
+                        <th>{{E_year_loan.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>2019</th>
+                        <th>{{A_year_loan.4}}</th>
+                        <th>{{B_year_loan.4}}</th>
+                        <th>{{C_year_loan.4}}</th>
+                        <th>{{D_year_loan.4}}</th>
+                        <th>{{E_year_loan.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>2020</th>
+                        <th>{{A_year_loan.5}}</th>
+                        <th>{{B_year_loan.5}}</th>
+                        <th>{{C_year_loan.5}}</th>
+                        <th>{{D_year_loan.5}}</th>
+                        <th>{{E_year_loan.5}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <div id="container-clients-year" style="width: 1300px;height: 650px;margin: auto;padding-top: 100px;"></div>
+            <p>各支行总用户(年)</p>
+            <table id="datatable-clients-year" style="margin-top: 30px;">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>A支行</th>
+                        <th>B支行</th>
+                        <th>C支行</th>
+                        <th>D支行</th>
+                        <th>E支行</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>2015</th>
+                        <th>{{A_year_client.0}}</th>
+                        <th>{{B_year_client.0}}</th>
+                        <th>{{C_year_client.0}}</th>
+                        <th>{{D_year_client.0}}</th>
+                        <th>{{E_year_client.0}}</th>
+                    </tr>
+                    <tr>
+                        <th>2016</th>
+                        <th>{{A_year_client.1}}</th>
+                        <th>{{B_year_client.1}}</th>
+                        <th>{{C_year_client.1}}</th>
+                        <th>{{D_year_client.1}}</th>
+                        <th>{{E_year_client.1}}</th>
+                    </tr>
+                    <tr>
+                        <th>2017</th>
+                        <th>{{A_year_client.2}}</th>
+                        <th>{{B_year_client.2}}</th>
+                        <th>{{C_year_client.2}}</th>
+                        <th>{{D_year_client.2}}</th>
+                        <th>{{E_year_client.2}}</th>
+                    </tr>
+                    <tr>
+                        <th>2018</th>
+                        <th>{{A_year_client.3}}</th>
+                        <th>{{B_year_client.3}}</th>
+                        <th>{{C_year_client.3}}</th>
+                        <th>{{D_year_client.3}}</th>
+                        <th>{{E_year_client.3}}</th>
+                    </tr>
+                    <tr>
+                        <th>2019</th>
+                        <th>{{A_year_client.4}}</th>
+                        <th>{{B_year_client.4}}</th>
+                        <th>{{C_year_client.4}}</th>
+                        <th>{{D_year_client.4}}</th>
+                        <th>{{E_year_client.4}}</th>
+                    </tr>
+                    <tr>
+                        <th>2020</th>
+                        <th>{{A_year_client.5}}</th>
+                        <th>{{B_year_client.5}}</th>
+                        <th>{{C_year_client.5}}</th>
+                        <th>{{D_year_client.5}}</th>
+                        <th>{{E_year_client.5}}</th>
+                    </tr>
+                </tbody>
+            </table>
+        
+
+        <p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/statistics/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/statistics/js/bootstrap.min.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/highcharts.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/oldie.js"></script>
+        <script src="https://code.highcharts.com.cn/highcharts/modules/data.js"></script>
+        <script src="../../../static/banksys/statistics/js/scripts.js"></script>
+	</body>
+</html>

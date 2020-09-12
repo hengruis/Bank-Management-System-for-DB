@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Modify Info</title>
+
+    	<link href="../../../static/banksys/account/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../../../static/banksys/account/css/style.css" rel="stylesheet">
+	</head>
+
+  	<body background="../../../static/banksys/background.jpg">
+    	<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		  
+					<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+						  		<a class="nav-link" href="../client/search">Profile</a>
+							</li>
+							<li class="nav-item active">
+						  		<a class="nav-link" href="#">Account  <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../loan/search">Loan</a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../statistics/search">Statistics</a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a>  
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>  
+					  	<a class="nav-link" href="create">Create Account</a>
+					  	<a class="nav-link" href="delete">Delete Account</a>
+					  	<a class="nav-link active" href="modify">Modify Info</a>
+						<a class="nav-link" href="search">Search</a>
+					</nav>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="alert alert-dismissable alert-info">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+									×
+								</button>
+								<h4>
+									Tips
+								</h4> To help you make sure which client profile you are changing, please enter <strong>account ID</strong> first.<br>
+								If you don't remember it, you might search for this account. Then modify the item or items you want.<br>
+								No need to fill the blank if not changing it.<br>
+								<strong>NOTE: </strong>You are NOT allowed to change account ID.
+							</div>
+
+							{% if message %}
+							{% if status == 0 %}
+							<div class="alert alert-warning" role="alert">{{ message }}</div>
+							{% endif %}
+							{% if status == 1 %}
+							<div class="alert alert-info" role="alert">{{ message }}</div>
+							{% endif %}
+							{% if status == 2 %}
+							<div class="alert alert-warning" role="alert">{{ message }}</div>
+							{% endif %}
+							{% if status == 3 %}
+							<div class="alert alert-warning" role="alert">{{ message }}</div>
+							{% endif %}
+							{% endif %}
+
+							<form role="form" style="padding-left: 865px;" method="POST">
+								<div class="form-group">
+							 		<label for="InputAccountID">
+										Account ID
+									</label>
+									<input type="account_id" class="form-row" id="InputAccountID" name="account_id" required autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="InputClientID">
+										Client ID
+									</label>
+									<input type="client_id" class="form-row" id="InputClientID" name="client_id" required>
+								</div>
+								
+								<div class="form-group">
+									<label for="InputAccType">
+										Account type
+									</label>
+									<input type="acctype" class="form-row" id="InputAccType" name="account_type">
+								</div> 
+
+								<div class="form-group">
+									<label for="InputRemain">
+										Remaining money
+									</label>
+									<input type="remain" class="form-row" id="InputRemain" name="remain">
+								</div>
+
+								<div class="form-group">
+									<label for="InputSubBranch">
+										Sub-branch
+									</label>
+									<input type="subbranch" class="form-row" id="InputSubBranch" name="bank_name" required>
+								</div>
+
+								<div class="form-group">
+									<label for="InputLatestAccess">
+										Latest access date
+									</label>
+									<input type="date" class="form-row" id="InputLatestAccess" name="latest_access">
+								</div>
+
+								<div class="form-group">
+									<label for="InputInterestRate">
+										Interest rate (save accounts only)
+									</label>
+									<input type="interstrate" class="form-row" id="InputInterestRate" value="0" name="interest_rate">
+								</div>
+
+								<div class="form-group">
+									<label for="InputCurrency">
+										Currency (save accounts only)
+									</label>
+									<input type="currency" class="form-row" id="InputCurrency" value="N/A" name="currency">
+								</div>
+
+								<div class="form-group">
+									<label for="InputOverdraft">
+										Overdraft (check accounts only)
+									</label>
+									<input type="overdraft" class="form-row" id="InputOverdraft" value="0" name="overdraft">
+								</div>
+
+								<button id="modal-809489" href="#modal-container-809489" role="button" class="btn btn-primary" data-toggle="modal" type="submit" method="POST">Submit</button>
+
+								<button type="reset" class="btn btn-warning" style="margin-left: 10px;">Reset</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/account/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/account/js/bootstrap.min.js"></script>
+		<script src="../../../static/banksys/account/js/scripts.js"></script>
+	</body>
+</html>

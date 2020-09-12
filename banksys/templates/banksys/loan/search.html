@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  	<head>
+    	<meta charset="utf-8">
+    	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    	<title>Search</title>
+
+    	<link href="../../../static/banksys/loan/css/bootstrap.min.css" rel="stylesheet">
+    	<link href="../../../static/banksys/loan/css/style.css" rel="stylesheet">
+	</head>
+
+	<body background="../../../static/banksys/background.jpg">
+    	<div class="container-fluid">
+			<div class="row">
+				<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+					<a class="navbar-brand mr-auto mr-lg-0" href="#">Bank Management System&nbsp;&nbsp;&nbsp;&nbsp;</a>
+		  
+					<div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+			  			<ul class="navbar-nav mr-auto">
+							<li class="nav-item">
+						  		<a class="nav-link" href="../client/search">Profile</a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../account/search">Account</a>
+							</li>
+							<li class="nav-item active">
+						  		<a class="nav-link" href="#">Loan <span class="sr-only">(current)</span></a>
+							</li>
+							<li class="nav-item">
+						  		<a class="nav-link" href="../statistics/search">Statistics</a>
+							</li>
+						</ul>
+						<a href="../sign_in/signin">
+							<button class="btn btn-outline-success my-2 my-sm-0">Sign out</button>
+						</a>  
+					</div>
+				</nav>
+		  
+				<div class="nav-scroller bg-white shadow-sm">
+					<nav class="nav nav-underline">
+						<a class="nav-link active" href="#"><strong>Actions:</strong></a>
+			  			<a class="nav-link" href="add">Add Loan</a>
+						<a class="nav-link" href="delete">Delete Loan</a>
+						<a class="nav-link" href="pay">Pay Loan</a>  
+						<a class="nav-link active" href="search">Search</a>
+					</nav>
+				</div>
+			</div>
+
+			{% if message %}
+			{% if status == 0 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 1 %}
+			<div class="alert alert-info" role="alert">{{ message }}</div>
+			{% endif %}
+			{% if status == 2 %}
+			<div class="alert alert-warning" role="alert">{{ message }}</div>
+			{% endif %}
+			{% endif %}
+
+			<div class="row">
+				<div class="col-md-12">
+					<div class="row">
+						<div class="col-md-12">
+							<form role="form" style="padding-left: 865px;" method="POST">
+								<div class="form-group">
+									<label for="InputLoanID">
+										Loan ID
+									</label>
+									<input type="loan_id" class="form-row" id="InputLoanID" name="loan_id" autofocus>
+								</div>
+
+								<div class="form-group">
+									<label for="InputLoanID">
+										Client ID
+									</label>
+									<input type="client_id" class="form-row" id="InputClientID" name="client_id">
+								</div>
+		
+								<button type="submit" class="btn btn-primary" style="margin-left: 45px;" method="POST">
+									<!-- TO BE DONE -->
+									Search
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<p class="mt-5 mb-3 text-muted" style="text-align: center;">&copy; Shi Hengrui, 2020</p>
+
+		<script src="../../../static/banksys/loan/js/jquery.min.js"></script>
+		<script src="../../../static/banksys/loan/js/bootstrap.min.js"></script>
+		<script src="../../../static/banksys/loan/js/scripts.js"></script>
+	</body>
+</html>
